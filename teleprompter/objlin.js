@@ -45,30 +45,22 @@ var Scripts = [
   "this is ____ saying",
   "Have a " + wordoftheday + " day, Lafayette!"
 ]
-/*
-var 5 = color('#a0a0ff');
-var 4 = color('#a0ffa0');
-var 1 = color('#a0a0a0');
-var 3 = color('#fff0a0');
-var 0 = color('#000000');
-var textColor = color('#fefefe');
 
-
-var 5;
-var 4;
-var 1;
-var 3;
-var 0;
-var textColor;
-var scCol;
-*/
 function setcolarr() {
 scCol = [
-  3,3,3,3,3,
+    /* COLOR REFERENCE
+ * 0 = black
+ * 1 = grey
+ * 2 = white (text)
+ * 3 = yellow
+ * 4 = green
+ * 5 = blue
+*/
+  3,3,3,3,3, //Seat 1
   0,0,
-  4,4,0,4,4,4,0,4,4,4,1,0,4,4,
+  4,4,0,4,4,4,0,4,4,4,1,0,4,4, //Seat 2
   0,0,
-  5,5,0,5,5,5,0,5,5,0,5,5,1,5,0,0,3,3,3,3
+  5,5,0,5,5,5,0,5,5,0,5,5,1,5,0,0,3,3,3,3 //Seat 3 and 1
 ]
 }
 function generateArray() {
@@ -103,6 +95,7 @@ Objlin.prototype.bg = function() {
 }
 
 Objlin.prototype.txt = function() {
+    textStyle(NORMAL);
     textAlign(LEFT,TOP);
     textFont("goody old style");
     fill(255,255,255);

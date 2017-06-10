@@ -7,23 +7,10 @@
 var loc = 40;
 var locmod = 5;
 var fontSize = 72;
-/*
-var Nblue;
-var Ngreen;
-var Ngrey;
-var Nyellow;
-var Nblack;
-var textColor;
-*/
 
-/* COLOR REFERENCE
- * 0 = black
- * 1 = grey
- * 2 = white (text)
- * 3 = yellow
- * 4 = green
- * 5 = blue
-*/
+var timeMode = false;
+var timeStarted;
+
 var quote = new String(prompt("(1/7) Please give a quote of the day.",""));
 var quoteAuthor = new String(prompt("(2/7) Who is the author of that quote?", ""));
 var onthisday = new String(prompt("(3/7) What happened, on this day in history?", ""));
@@ -34,13 +21,7 @@ var wordoftheday = new String(prompt("(7/7) And finally, give a word of the day!
 
 function setup() {
     createCanvas(windowWidth-4,windowHeight-4);
-    noStroke(); /*
-    Nblue = color(160,160,255);
-    Nblack = color(0,0,0);
-    Ngreen = color(160,255,160);
-    Ngrey = color(160,160,160);
-    Nyellow = color(255,240,160);
-    textColor = color(254,254,254); */
+    noStroke();
     setcolarr();
     textSize(fontSize);
     generateArray();
@@ -51,6 +32,7 @@ function draw() {
     checkForKeys();
     layoutBG();
     layoutText();
+    renderTime();
 }
 
 function windowResized() {resizeCanvas(windowWidth-4,windowHeight-4);}
@@ -58,6 +40,17 @@ function windowResized() {resizeCanvas(windowWidth-4,windowHeight-4);}
 function checkForKeys() {
     if (keyIsDown(UP_ARROW)) {loc += locmod;}
     if (keyIsDown(DOWN_ARROW)) {loc -= locmod;}
+}
+
+function keyPressed() {
+    switch(keyCode) {
+        case 77:
+            timeMode = !timeMode;
+        break;
+        case 32:
+            timeStarted = millis();
+        break;
+    }
 }
 
 function layoutBG() {
@@ -68,5 +61,21 @@ function layoutBG() {
 function layoutText() {
     for (var p = 0; p<arrlin.length; p++) {
         arrlin[p].txt();
+    }
+}
+
+function renderTime() {
+    textFont("courier new");
+    fill(255,20,20,200);
+    textStyle(BOLD);
+    if (timeMode==false) {
+        textAlign(RIGHT,BOTTOM);
+        text(hour() + ":" + minute()%60 + ":" + second(),windowWidth-40,windowHeight-40);
+        textAlign(LEFT,BOTTOM);
+        text((d.getMonth()+1) + "/" + d.getDate() + "/" + d.getFullYear(),40,windowHeight-40)
+    } else
+    if (timeMode==true) {
+        textAlign(RIGHT,BOTTOM);
+        text((round(round(millis()/10)/10 - round(timeStarted/10)/10))/10,windowWidth-40,windowHeight-40);
     }
 }
