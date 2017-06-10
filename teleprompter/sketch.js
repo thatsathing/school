@@ -1,9 +1,22 @@
+
+
 /* Teleprompter for the tvstudio
  * 'cause why not?
  * Written by Ethan Horn.
 */
+/*
+var Nblue;
+var Ngreen;
+var Ngrey;
+var Nyellow;
+var Nblack;
+var textColor;
+//look ma', github!
+
 // ~ Editable stuff below ~
 var fontSize = 72;
+
+
 
 // I recommend you don't edit the stuff below unless you know what you're doing.
 var loc = 40;
@@ -39,9 +52,81 @@ var dispMonth = new Array(12);
   dispMonth[10] = "Novemeber";
   dispMonth[11] = "December";
 
+var Scripts = [
+  "Good Morning Tigers!", Nyellow,
+  "Today is " + dispDay[d.getDay()] + ", " + dispMonth[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear(), Nyellow,
+  "Today's lunch menu includes:", Nyellow,
+  "And now to _____", Nyellow,
+  "with the quote of the day!", Nyellow,
+  "", Nblack,
+  "", Nblack,
+  "Thank you, _____,", Ngreen,
+  "for that tasty lunch report!", Ngreen,
+  "", Nblack,
+  "Quote of the day:", Ngreen,
+  quote, Ngreen,
+  "  - " + quoteAuthor, Ngreen,
+  "", Ngreen,
+  "Band groups: ", Ngreen,
+  band, Ngreen,
+  "Student Announcements:", Ngreen,
+  "", Ngreen,
+  "And now to _____", Ngreen,
+  "With today's weather!", Ngreen,
+  "", Nblack,
+  "", Nblack,
+  "Thank you, _____,", Nblue,
+  "for that lovely weather report!", Nblue,
+  "", Nblue,
+  "On this day in history:", Nblue,
+  "In " + onthisdayYear + ",", Nblue,
+  "  " + onthisday, Nblue,
+  "", Nblue,
+  "Happy birthday to:", Nblue,
+  birthdays, Nblue,
+  "",Nblue,
+  "Please stand and face your flag for", Nblue,
+  "'The Pledge of Allegiance'", Nblue,
+  "(PAUSE FOR 5 SECONDS)", Ngrey,
+  "'I pledge allegiance...'", Nblue,
+  "", Nblack,
+  "", Nblack,
+  "From ____, ____, _____, and the whole", Nyellow,
+  "behind-the scenes crew,", Nyellow,
+  "this is ____ saying", Nyellow,
+  "Have a " + wordoftheday + " day, Lafayette!", Nyellow
+]
+var scriptsColor = [
+  Nyellow,Nyellow,Nyellow,Nyellow,Nyellow,
+  Nblack,Nblack,
+  Ngreen,Ngreen,
+  Nblack,
+  Ngreen,Ngreen,Ngreen,
+  Nblack,
+  Ngreen,Ngreen,Ngreen,Ngreen,
+  Nblack,Nblack,
+  Nblue,Nblue,
+  Nblack,
+  Nblue,Nblue,Nblue,
+  Nblack,
+  Nblue,Nblue,
+  Nblack,
+  Nblue,Nblue,
+  Ngrey,
+  Nblue,
+  Nblack,Nblack,
+  Nyellow,Nyellow,Nyellow,Nyellow
+]
+
 function setup() {
   createCanvas(windowWidth-4,windowHeight-4);
   textSize(fontSize);
+  Nblue = color('#a0a0ff');
+  Nblack = color('#000000');
+  Ngreen = color('#a0ffa0');
+  Ngrey = color('#a0a0a0');
+  Nyellow = color('#fff0a0');
+  textColor = color('#fefefe');
 }
 
 function draw() {
@@ -68,58 +153,16 @@ function timeTicker() {
   text((floor((millis()*100)/10000))/10,width-20,height-20);
 }
 
-var Scripts = [
-  "Good Morning Tigers!",
-  "Today is " + dispDay[d.getDay()] + ", " + dispMonth[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear(),
-  "Today's lunch menu includes:",
-  "And now to _____",
-  "with the quote of the day!",
-  "",
-  "",
-  "Thank you, _____,",
-  "for that tasty lunch report!",
-  "",
-  "Quote of the day:",
-  quote,
-  "  - " + quoteAuthor,
-  "",
-  "Band groups: ",
-  band,
-  "Student Announcements:",
-  "",
-  "And now to _____",
-  "With today's weather!",
-  "",
-  "",
-  "Thank you, _____,",
-  "for that lovely weather report!",
-  "",
-  "On this day in history:",
-  "In " + onthisdayYear + ",",
-  "  " + onthisday,
-  "",
-  "Happy birthday to:",
-  birthdays,
-  "",
-  "Please stand and face your flag for",
-  "'The Pledge of Allegiance'",
-  "(PAUSE FOR 5 SECONDS)",
-  "'I pledge allegiance...'",
-  "",
-  "",
-  "From ____, ____, _____, and the whole",
-  "behind-the scenes crew,",
-  "this is ____ saying",
-  "Have a " + wordoftheday + " day, Lafayette!"
-
-]
-
 function displayText() {
-  fill('#fefefe');
   textFont("goudy old style");
   textStyle(BOLD);
   textAlign(LEFT, TOP);
-  for (var i = 0; i < Scripts.length; i++) {
-    text(Scripts[i],40,i*fontSize+loc);
+  for (var i = 0; i < Scripts.length/2; i++) {
+    var colTemp = scriptsColor[i];
+    fill(colTemp);
+    rect(40,i*fontSize+loc,windowWidth,fontSize);
+    fill(textColor);
+    text(Scripts[i*2],40,i*fontSize+loc);
   }
 }
+*/
