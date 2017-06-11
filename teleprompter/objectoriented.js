@@ -1,7 +1,7 @@
 /*  
  *  An attempt on making the teleprompter object-oriented.
  *  Written by Ethan    
- *
+ *  Quotes from BrainyQuotes
  */ 
 
 var loc = 40;
@@ -12,20 +12,26 @@ var timeMode = false;
 var timeStarted;
 
 var scriptst;
+var quotest;
 var scripts;
+var quotes;
+var quotesRand;
+
 var fontType;
 
-var quote = new String(prompt("(1/7) Please give a quote of the day.",""));
-var quoteAuthor = new String(prompt("(2/7) Who is the author of that quote?", ""));
-var onthisday = new String(prompt("(3/7) What happened, on this day in history?", ""));
-var onthisdayYear = new String(prompt("(4/7) On what year did this happen?"));
-var birthdays = new String(prompt("(5/7) Whose birthdays are today? Also include belated birthdays.", ""));
-var band = new String(prompt("(6/7) What are the band periods for today?", ""));
-var wordoftheday = new String(prompt("(7/7) And finally, give a word of the day!", ""));
+var quote;
+var quoteAuthor;
+var onthisday;
+var onthisdayYear;
+var birthdays;
+var band;
+var wordoftheday;
 
 function preload() {
     scriptst = loadJSON("scripts.json");
+    quotest = loadJSON("quotes.json");
     scripts = [];
+    quotes = [];
     fontType = loadFont("assets/Inconsolata-Regular.ttf")
 }
 
@@ -33,23 +39,37 @@ function setup() {
     createCanvas(windowWidth-4,windowHeight-4);
     noStroke();
     textSize(fontSize);
+
     for (var p = 0; p < scriptst.arr.length; p++) {
         scripts[p] = new Objlin(scriptst.arr[p].content,scriptst.arr[p].col,p);
     }
-    // Templates
+    for (var g = 0; g < quotest.jsonquotesarr.length; g++) {
+        quotes[g] = quotest.jsonquotesarr[g];
+    }
+
+    quotesRand = random(0,quotes.length);
+    quote = new String(prompt("(1/7) Please give a quote of the day.", quotes[quotesRand].quote));
+    quoteAuthor = new String(prompt("(2/7) Who is the author of that quote?", quotes[quoteRand].quoteAuthor));
+    onthisday = new String(prompt("(3/7) What happened, on this day in history?", ""));
+    onthisdayYear = new String(prompt("(4/7) On what year did this happen?"));
+    birthdays = new String(prompt("(5/7) Whose birthdays are today? Also include belated birthdays.", ""));
+    band = new String(prompt("(6/7) What are the band periods for today?", ""));
+    wordoftheday = new String(prompt("(7/7) And finally, give a word of the day!", ""));
+
     for (var o = 0; o < scripts.length; o++) {
         scripts[o].content = scripts[o].content.replace("{{dayName}}",dispDay[d.getDay()])
         scripts[o].content = scripts[o].content.replace("{{monthName}}",dispMonth[d.getMonth()])
         scripts[o].content = scripts[o].content.replace("{{date}}",d.getDate())
         scripts[o].content = scripts[o].content.replace("{{year}}",d.getFullYear())
         scripts[o].content = scripts[o].content.replace("{{band}}",band)
-        scripts[o].content = scripts[o].content.replace("{{quote}}",quoteAuthor)
+        scripts[o].content = scripts[o].content.replace("{{quote}}",quote)
         scripts[o].content = scripts[o].content.replace("{{quoteAuthor}}",quoteAuthor)
         scripts[o].content = scripts[o].content.replace("{{onthisday}}",onthisday)
         scripts[o].content = scripts[o].content.replace("{{onthisdayYear}}",onthisdayYear)
         scripts[o].content = scripts[o].content.replace("{{wordoftheday}}",wordoftheday)
         scripts[o].content = scripts[o].content.replace("{{birthdays}}",birthdays)
     }
+    timeStarted = millis();
 }
 
 

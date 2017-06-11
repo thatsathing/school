@@ -1,0 +1,16 @@
+{
+    "jsonquotesarr":[
+        {"quote":"Example is the est precept.","author":"Aesop"},
+        {"quote":"Time you enjoy wasing, was not wasted.","author":"John Lennon"},
+        {"quote":"I can live for two months on a good compliment.","author":"Mark Twain"},
+        {"quote":"Wisdom outweighs any wealth.","author":"Sophocles"},
+        {"quote":"Only I can change my life. No one can do it for me.","author":"Carol Burnett"},
+        {"quote":"It always seems impossible until it's done.","author":"Nelson Mandela"},
+        {"quote":"If you can dream it, you can do it.","author":"Walt Disney"},
+        {"quote":"Be kind whenever possible. It is always possible.","author":"Dalai Lama"},
+        {"quote":"Aim for the moon. If you miss, you may hit a star.","author":"W. Clement Stone"},
+        {"quote":"There's a way to do it better - find it.","author":"Thomas A. Edison"},
+        {"quote":"We aim above the mark to hit the mark.","author":"Ralph Waldo Emerson"},
+        {"quote":"Do not go where the path may lead, go instead where there is no path and leave a trail.","author":"Ralph Waldo Emerson"}
+    ]
+}
