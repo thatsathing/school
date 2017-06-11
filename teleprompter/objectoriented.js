@@ -13,6 +13,7 @@ var timeStarted;
 
 var scriptst;
 var scripts;
+var fontType;
 
 var quote = new String(prompt("(1/7) Please give a quote of the day.",""));
 var quoteAuthor = new String(prompt("(2/7) Who is the author of that quote?", ""));
@@ -25,6 +26,7 @@ var wordoftheday = new String(prompt("(7/7) And finally, give a word of the day!
 function preload() {
     scriptst = loadJSON("scripts.json");
     scripts = [];
+    fontType = loadFont("assets/Inconsolata-Regular.ttf")
 }
 
 function setup() {

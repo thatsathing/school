@@ -1,7 +1,7 @@
 function Objlin(content,col,splace) {
     this.content = content;
     this.col = col;
-    this.splace = splace
+    this.splace = splace;
 }
 
 Objlin.prototype.bg = function() {
@@ -20,13 +20,13 @@ Objlin.prototype.bg = function() {
     if (this.col==1) {
         fill(color(160,160,160));
     } 
-    rect(40,this.splace*72+loc,windowWidth,fontSize);
+    rect(40,this.splace*72+loc,(this.content.length*fontSize/2)+4,fontSize-4);
 }
 
 Objlin.prototype.txt = function() {
     textStyle(NORMAL);
     textAlign(LEFT,TOP);
-    textFont("goody old style");
+    textFont(fontType);
     fill(255,255,255);
     text(this.content,40,this.splace*72+loc);
 }
