@@ -1,8 +1,8 @@
-/*  
+/*
  *  An attempt on making the teleprompter object-oriented.
- *  Written by Ethan    
+ *  Written by Ethan
  *  Quotes from BrainyQuotes
- */ 
+ */
 
 var loc = 40;
 var locmod = 5;
@@ -10,15 +10,12 @@ var fontSize = 72;
 
 var timeMode = false;
 var timeStarted;
-
 var scriptst;
 var quotest;
 var scripts;
 var quotes;
 var quotesRand;
-
 var fontType;
-
 var quote;
 var quoteAuthor;
 var onthisday;
@@ -30,9 +27,9 @@ var wordoftheday;
 function preload() {
     scriptst = loadJSON("scripts.json");
     quotest = loadJSON("quotes.json");
+    fontType = loadFont("assets/Inconsolata-Regular.ttf")
     scripts = [];
     quotes = [];
-    fontType = loadFont("assets/Inconsolata-Regular.ttf")
 }
 
 function setup() {
@@ -48,8 +45,8 @@ function setup() {
     }
 
     quotesRand = random(0,quotes.length);
-    quote = new String(prompt("(1/7) Please give a quote of the day.", quotes[quotesRand].quote));
-    quoteAuthor = new String(prompt("(2/7) Who is the author of that quote?", quotes[quoteRand].quoteAuthor));
+    quote = new String(prompt("(1/7) Please give a quote of the day.", ""));
+    quoteAuthor = new String(prompt("(2/7) Who is the author of that quote?", ""));
     onthisday = new String(prompt("(3/7) What happened, on this day in history?", ""));
     onthisdayYear = new String(prompt("(4/7) On what year did this happen?"));
     birthdays = new String(prompt("(5/7) Whose birthdays are today? Also include belated birthdays.", ""));
@@ -86,6 +83,8 @@ function windowResized() {resizeCanvas(windowWidth-4,windowHeight-4);}
 function checkForKeys() {
     if (keyIsDown(UP_ARROW)) {loc += locmod;}
     if (keyIsDown(DOWN_ARROW)) {loc -= locmod;}
+    if (keyIsDown(81) {locmod++;}
+    if (keyIsDown(65)) {locmod--;}
 }
 
 function keyPressed() {
@@ -131,4 +130,5 @@ function renderTime() {
             text(passedMin + ":" + passedSec + "." + passedMil,windowWidth-40,windowHeight-40);
         }
     }
+    text(locmod,width-40,height-fontSize-60);
 };
